@@ -1,0 +1,106 @@
+<template id="app.html">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo waves-effect waves-light">&nbsp;${router.title}</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse" materialize="sidenav">
+                <i class="mdi-navigation-menu"></i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li repeat.for="route of router.navigation" class="${route.isActive ? 'active' : ''}">
+                    <a href.bind="route.href" class="waves-effect waves-light">${route.title}</a>
+                </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+                <li repeat.for="route of router.navigation" class="${route.isActive ? 'active' : ''}">
+                    <a href.bind="route.href" class="waves-effect waves-light">${route.title}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="page-host">
+        <router-view></router-view>
+    </div>
+</template>
+<template id="child-router.html">
+  <section class="au-animate">
+    <h2>${heading}</h2>
+    <div>
+      <div class="col-md-2">
+        <ul class="well nav nav-pills nav-stacked">
+          <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+            <a href.bind="row.href">${row.title}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-10" style="padding: 0">
+        <router-view></router-view>
+      </div>
+    </div>
+  </section>
+</template>
+<template bindable="router" id="nav-bar.html">
+    <script>
+        $(document).ready(function () {
+            $(".button-collapse").sideNav();
+        });
+    </script>
+    <nav role="navigation">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">${router.title}</a>
+            <a href="#" data-activates="mobile-nav" class="button-collapse" materialize="sidenav">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="side-nav" id="mobile-nav">
+                <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+                    <a href.bind="route.href" class="waves-effect waves-light">${route.title}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</template>
+<template id="users.html">
+
+    <section>
+        <h2>${heading}</h2>
+        <div class="row">
+            <ul id="staggedThat">
+                <li class="col s12 m7" style="opacity: 0;" repeat.for="user of users">
+                    <div class="card hoverable">
+
+                        <div class="card-image">
+                            <img src.bind="user.avatar_url" crossorigin="" ref="image">
+                            <span class="card-title">${user.login}</span>
+                        </div>
+                        <div class="card-action">
+                            <a target="_blank" href.bind="user.html_url">Contact</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+</template>
+<template id="welcome.html">
+  <section>
+    <h4>${heading}</h4>
+    <form role="form" submit.delegate="submit()" class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="first_name" value.bind="firstName" type="text" class="validate">
+                <label for="first_name">First Name</label>
+            </div>
+            </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="last_name" value.bind="lastName" type="text" class="validate">
+                <label for="last_name">Last Name</label>
+            </div>
+        </div>
+      <div class="row">
+        <label>Full Name</label>
+        <p class="help-block">${fullName | upper}</p>
+      </div>
+      <button type="submit" class="waves-effect waves-light btn">Submit</button>
+    </form>
+  </section>
+</template>

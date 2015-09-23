@@ -1,0 +1,24 @@
+<template>
+
+    <section>
+        <h2>${heading}</h2>
+        <div class="row">
+
+            <div class="col s12 m7" repeat.for="user of users">
+
+                <div class="card hoverable">
+
+                    <div class="card-image">
+                        <img src.bind="user.avatar_url" crossorigin ref="image" />
+                        <span class="card-title">${user.login}</span>
+                    </div>
+                    <div class="card-action">
+                        <a target="_blank" href.bind="user.html_url">Contact</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+</template>

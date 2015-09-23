@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:; img-src https://avatars.githubusercontent.com">
+    <title>Gennt</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection">
+
+    <link aurelia-view-bundle="" rel="import" href="app/view-bundle.html">
+
+    <script src="scripts/system.js"></script>
+    <script src="scripts/config.js"></script>
+
+    <script src="app/app-build.js"></script>
+    <script src="app/aurelia.js"></script>
+
+    <script src="scripts/index.js"></script>
+<link aurelia-view-bundle="" rel="import" href="./app/view-bundle.html"></head>
+<body aurelia-app="main">
+
+    <div class="valign-wrapper">
+        <div class="valign">
+            <h4>Let's get it on...</h4>
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+    
+    <script>
+        System.import('aurelia-bootstrapper');
+    </script>
+
+</body></html>
